@@ -1,0 +1,378 @@
+/* File: badass-responsive.less         
+/* Author: Brandon Scott             
+/* Purpose: Define style overrides for  Landscape phones and down
+------------------
+*/
+
+@media (max-width: 960px) {
+  .top-bar-container .top-bar .top-bar-section ul li.home {
+    margin-left: 0;
+    margin-top: 0;
+    width: 79px;
+    
+    a {
+      background-size: 82px;
+      margin-top: 6px;
+      line-height: 82px;
+    }
+
+  }
+
+}
+
+@media (max-width: 836px) {
+  .top-bar-container .top-bar .top-bar-section ul li.home {
+    position: absolute;
+    margin-top: 0;
+    width: 98px;
+    right: 14px;
+    top: 56px;
+    height: auto;
+    
+    a {
+      background-position: 9px 7px;
+      background-color: lighten(@black, 25%);
+      border-radius: 0px 0px 8px 8px;
+      line-height: 56px;
+      margin-top: 0px;
+      padding: 9px;
+      
+      &:hover {
+        background-color: lighten(@black, 10%);
+      }
+
+    }
+
+  }
+
+}
+
+@media (max-width: 769px) {
+
+  /* Hide 'Show background image' */
+  /*-----------------*/  
+
+  button.show-bg-image {
+   .hide;
+  }
+
+  /* Overwrite */
+  /*-----------------*/  
+
+  body.badass-overwrite {
+
+    #wrapper {
+      .transition-this-only;
+      margin: 45px 0px 0 0%;
+      z-index: 200;
+      
+      /* Expanded menu*/
+      /*-----------------*/
+
+      &.expanded-menu {
+        margin-left: -100%;
+      }
+    }
+  }
+
+  /* Top bar */
+  /*-----------------*/
+
+  .top-bar-container {
+    background: #111;
+    height: 45px;
+    overflow: hidden;
+    z-index: 210;
+
+    &.expanded-menu {
+      .transition-this-only(2s);
+      overflow: visible;
+    }
+
+    .top-bar {
+      background: none;
+      height: auto;
+
+      &.expanded {
+        .top-bar-section {
+          height: auto;
+          overflow: visible;
+
+          ul {
+            .transition-this-only;
+            margin-left: 0%;
+          }
+        }
+      }
+
+      .top-bar-inner-container {
+        padding: 0 0 0 0px;
+        width: auto;
+      }
+
+      .top-bar-section {
+
+        ul {
+          .transition-this-only;
+          margin-left: 100%;
+          
+          .divider {
+            display: block;
+          }
+
+          li {
+            
+            &.home,
+            &.social {
+              .hide;
+            }
+
+            &.social {
+              + li {
+                .hide;
+              }
+            }
+
+            &.current-menu-item {
+              a {
+                border-bottom: 1px solid @brandingYellow;
+              }
+            }
+
+            a {
+              border-bottom: 1px solid lighten(@black, 5%);
+              text-align: right;
+              padding: 6px 15px 6px 0;
+
+              &:hover {
+                border-bottom: 1px solid @transBrandingYellow;
+              }
+            }
+          }
+        }
+      }  
+    }
+  }
+
+  /* Homepage */
+  /*-----------------*/
+
+  .homepage-container {
+    
+    /* Register */
+    /*-----------------*/
+    
+    .register-now {
+      a {
+        width: auto;
+      }
+    }
+
+  }
+
+  /* Badass orbit carousel */
+  /*-----------------*/
+
+  .badass-orbit {
+    .orbit-container {
+      ul.orbit-slides-container {
+        > li {
+          .slide-container {
+
+            /* Slide content */
+
+            .slide-content {
+
+              h2 {
+                font-size: 32px;
+                line-height: 1.1em;
+              }
+
+              h3 {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      .orbit-next, 
+      .orbit-prev {
+        z-index: 200;
+        height: 25px;
+        padding: 25px;
+        width: 25px;
+      }
+
+      .orbit-prev {
+        left: 0px;
+
+        &:hover,
+        &:focus,{
+          span {
+            border-right-color: #fff;    
+          }
+        }
+      }
+
+      .orbit-next {
+        right: 0px;
+        &:hover,
+        &:focus,{
+          span {
+            border-left-color: #fff;    
+          }
+        }
+      }
+    }
+  }
+
+  /* Internal page orbit */
+  /*-----------------*/
+
+  .badass-orbit.internal-page-orbit {  
+    .orbit-container {
+      ul.orbit-slides-container {
+        height: 268px;
+
+        > li {
+          min-height: 268px;
+          max-height: 268px;
+
+          .slide-image-bg {
+            img {
+              height: 268px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Obstacle page */
+  /*-----------------*/
+
+  .obstacle-details-container{
+    min-height: 250px;
+    width: 100%;
+
+    .obstacle-content {
+      margin: 0 auto;
+
+      > * {
+        padding: 0 0px;
+      }
+      
+      .orbit-container {
+        height: 250px;      
+      }
+
+      .orbit-slides-container {
+        height: 250px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+
+        > li {
+          height: 250px;
+          overflow: hidden;
+          
+          div.cropped-image-slide {
+            .cropped-image(100%, 250px);
+          }​
+
+        }
+
+      }
+
+    }
+
+  }
+
+  /* Loading feedback */
+  /*-----------------*/
+
+  #floatingBarsG{
+    margin: 0 auto;
+    z-index: 100;
+  }
+
+}
+
+/* Touch screens */
+/*-----------------*/
+
+.touch {
+
+  /* Obstacle page */
+  /*-----------------*/
+
+  .obstacle-details-container{
+    min-height: 310px;
+    width: 100%;
+
+    .obstacle-content {
+      margin: 0 auto;
+
+      > * {
+        padding: 0 0px;
+      }
+      
+      .orbit-container {
+        background: @transMidnightBlue !important; 
+        height: 310px;      
+      }
+
+      .orbit-slides-container {
+        height: 250px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+
+        > li {
+          height: 250px;
+          overflow: hidden;
+          
+          div.cropped-image-slide {
+            .cropped-image(100%, 250px);
+          }​
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .badass-orbit {
+    .orbit-container {
+      .orbit-next, 
+      .orbit-prev {
+        display: block !important;
+      }
+    }
+  }
+
+  .orbit-obstacle {
+    .orbit-next, 
+    .orbit-prev {
+      background-color: @black; 
+      top: 274px;
+    }
+  }
+  
+  
+  /* eModal-1 */
+  /*-----------------*/
+
+  #eModal-1 { 
+    &.modal {
+      margin-left: 10%;
+      width: 80%;
+    }
+  }
+
+} 

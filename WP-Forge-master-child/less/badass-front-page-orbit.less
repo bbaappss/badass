@@ -1,0 +1,125 @@
+/* File: badass-front-page-orbit.less
+/* Author: Brandon Scott         
+/* Purpose: Define styles of front page orbit
+------------------
+*/
+
+/* Front page carousel */
+/* This is the main navigation that sticks at the top of the page */
+/*-----------------*/
+
+.front-page-carousel {
+  padding: 0 0;
+  .orbit-container {
+    ul.orbit-slides-container {
+      background: grey;
+
+      > li {
+        transition:  1s;
+        -webkit-transition:  1s; /* Safari */
+
+        min-height: 368px;
+        max-height: 368px;
+        opacity: 0;
+        width: 600px;
+
+        &.active {
+          margin: 0 auto;
+          margin-left: 20% !important;
+          opacity: 1;
+          z-index: 100;
+        }
+
+        &.next-slide,
+        &.prev-slide {
+          z-index: 50 !important;
+          opacity: .2 !important;
+        }
+
+        &.next-slide {
+          margin-left: 80% !important;
+        }
+
+        &.prev-slide {
+          margin-left: 0% !important;
+        }
+
+        .slide-image-bg {
+          width: 600px;
+          opacity: 1;
+          overflow: hidden;
+          position: absolute;
+          z-index: 0;
+          
+          img {
+            height: 368px;
+            z-index: 10;
+          }
+
+        }
+
+        .slide-container {
+          margin: 0 auto;
+          padding: 12px 0px;
+          position: relative;
+          width: 90%;
+          margin-top: 6%;
+          z-index: 0;
+
+          .slide-content-bg {
+            border-radius: 8px;
+            opacity: .5;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+          }
+
+          .slide-content {
+            position: relative;
+            z-index: 20;
+
+            h1, h2, h3, h4, p, a{
+              color: @white;
+              padding: 0px 12px;
+              text-shadow: 1px 1px 4px @black;
+            }
+          }
+
+        }
+      }
+    }
+    
+    .orbit-bullets-container {
+      display: none;
+    }
+
+    .orbit-timer {
+      z-index: 800;
+    }
+
+    .orbit-prev {
+      left: 0%;
+    }
+
+    .orbit-next {
+      right: 0%;
+    }
+
+    .orbit-prev, 
+    .orbit-next {
+      background: none;
+      z-index: 600;
+      height: 100%;
+      margin-top: 0;
+      top: 0;
+      width: 200px;
+      
+      span {
+        left: 48%;
+      }
+
+    }
+
+  }
+}
