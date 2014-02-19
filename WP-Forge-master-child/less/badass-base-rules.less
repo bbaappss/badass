@@ -1,0 +1,46 @@
+/* File: badass-base.less         
+/* Author: Brandon Scott             
+/* Purpose: Define base rules
+------------------
+*/
+
+.font-messy {
+  font-family: "custom-one"!important;
+}
+
+/* Hiding */
+
+.hide-text-indent {
+  text-indent: -9999em;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+/* Clickables */
+/*-----------------*/
+
+/* Buttons */
+/*-----------------*/
+
+a.ba-btn,
+button.ba-btn,
+p.ba-btn {
+  background: lighten(@black, 25%);
+  border-radius: 8px;
+  color: @brandingYellow;
+  display: block;
+  padding: 1em 1.5em;
+  text-shadow: -1px 1px 4px #000;
+  
+  &:hover{
+    background: lighten(@black, 22%);
+    color: lighten(@brandingYellow, 5%);
+  }
+
+}

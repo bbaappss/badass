@@ -1,0 +1,87 @@
+/* File: badass-base.less         
+/* Author: Brandon Scott             
+/* Purpose: Define base rules
+------------------
+*/
+
+/* Unstyled */
+/*-----------------*/
+.unstyled-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hiding */
+/*-----------------*/
+
+.hide-text-indent {
+  text-indent: -9999em;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+
+/* Text */
+/*-----------------*/
+
+.font-messy {
+  font-family: "custom-one"!important;
+}
+
+
+/* Clickables */
+/*-----------------*/
+
+/* Links */
+a {
+  color: lighten (@black, 10%);
+  text-shadow: 1px 1px -1px ligthen(@brandingYellow, 25%);
+}
+
+/* Desaturate */
+/*-----------------*/
+
+.desaturate {
+  > * {
+    -webkit-filter: grayscale(50%);
+    -moz-filter: grayscale(50%);
+    filter: grayscale(50%);
+  
+    &:hover {
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
+  }
+}
+
+/* Buttons */
+/*-----------------*/
+
+button.ba-btn,
+a.ba-btn {
+  background: lighten(@black, 25%);
+  border-radius: 8px;
+  color: @brandingYellow;
+  display: block;
+  padding: 1em 1.5em;
+  text-align: center;
+  text-shadow: -1px 1px 4px #000;
+  
+  &:hover{
+    background: lighten(@black, 22%);
+    color: lighten(@brandingYellow, 5%);
+  }
+
+  &.btn-large {
+    font-size: 1.4em;
+  }
+
+}
