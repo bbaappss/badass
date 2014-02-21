@@ -126,7 +126,7 @@ get_header(); ?>
                       $postDate = new DateTime($postDate); 
                       $postDate = $postDate->format('F j, Y');
 
-                      echo '<p>Posted on '.$postDate.'</p>';
+                      echo '<p>'.$postDate.'</p>';
                       $parsedContent = strip_tags($recent["post_content"]);
                       
                       if (strlen($parsedContent) > 500 ) {
