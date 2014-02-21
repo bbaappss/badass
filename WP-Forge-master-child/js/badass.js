@@ -25,17 +25,17 @@ jQuery( document ).ready(function( $ ) {
   /* Animate logo on scroll */
   /*-----------------*/
 
-  // $( window ).scroll(function() {
+  $( window ).scroll(function() {
 
-  //   var height = $(window).scrollTop();
+    var height = $(window).scrollTop();
 
-  //   if ((height  > 80) && (!$('.top-bar-container .top-bar .top-bar-section ul li.home').hasClass('after-scroll'))) {
-  //     $('.top-bar-container .top-bar .top-bar-section ul li.home').toggleClass('after-scroll');
-  //   } else if ((height <= 79 ) && $('.top-bar-container .top-bar .top-bar-section ul li.home').hasClass('after-scroll'))  {
-  //     $('.top-bar-container .top-bar .top-bar-section ul li.home').toggleClass('after-scroll');
-  //   }
+    if ((height  > 80) && (!$('.top-bar-container .top-bar .top-bar-section ul li.top-cta').hasClass('after-scroll'))) {
+      $('.top-bar-container .top-bar .top-bar-section ul li.top-cta').toggleClass('after-scroll');
+    } else if ((height <= 79 ) && $('.top-bar-container .top-bar .top-bar-section ul li.top-cta').hasClass('after-scroll'))  {
+      $('.top-bar-container .top-bar .top-bar-section ul li.top-cta').toggleClass('after-scroll');
+    }
 
-  // });
+  });
 
   /* Show background image */
   /*-----------------*/
@@ -88,21 +88,14 @@ jQuery( document ).ready(function( $ ) {
 
     var rightNow = new Date();
 
-    console.log('rightNow: ' + rightNow);
-
     rightNow = rightNow.getTime();
 
     rightNow = Number(rightNow);    
-
-    console.log('rightNow: ' + rightNow + 'milliseconds');
 
 
     if (modalExpireDate !== null) {
       modalExpireDate = Number(modalExpireDate);
     }
-
-    console.log('modalExpireDate: ' + modalExpireDate);
-    console.log('modalExpireDate - rightNow: ' + (modalExpireDate - rightNow + 'milliseconds'));
 
     if ( modalExpireDate == null || modalExpireDate < rightNow) {
       
@@ -113,7 +106,6 @@ jQuery( document ).ready(function( $ ) {
 
         // Set NEWSLETTERMODALEXPIRE cookie
         var expireDate = rightNow + 36000000;
-        console.log ('expireDate:' + expireDate + 'milliseconds');
         document.cookie="NEWSLETTERMODALEXPIRE="+expireDate;
 
       }, 2500);
