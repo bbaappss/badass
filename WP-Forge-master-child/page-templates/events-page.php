@@ -34,46 +34,37 @@ get_header(); ?>
     ?>
     <div class="columns small-12">
         <h2>Upcoming</h2>
-        <table class="badass-table event-selection">
-            <tr class="headers">
-                <th>Event</th>
-                <th>Date</th>
-                <th class="hide-text">Register</th>
-            </tr>
-                <?php while ( $eventPod->fetch() ) : ?> 
-                    
-                    <?php
-                        $id                     = $eventPod->ID();
-                        $permalink              = get_permalink( $id );
-                        $name                   = $eventPod->field('name');
-                        $date                   = $eventPod->field('event_date');
-                        $eventbrightlink        = $eventPod->field('event_bright_registration_link');
-                    ?>
-                    <tr>
-                        <td class="event-title">
-                            <a href="<?php echo $permalink ?>" class="ba-btn font-messy">
+        <div class="events-container">
+            <div class="row event-headings hide-for-small">
+                <span class="columns large-7 small-12 header-event-title">EVENT</span>
+                <span class="columns large-2 small-12 header-date">DATE</span>
+                <span class="columns large-3 small-12 header-register-now">REGISTER</span>
+            </div>
+            <?php while ( $eventPod->fetch() ) : ?> 
+                <?php
+                    $id                     = $eventPod->ID();
+                    $permalink              = get_permalink( $id );
+                    $name                   = $eventPod->field('name');
+                    $date                   = $eventPod->field('event_date');
+                    $eventbrightlink        = $eventPod->field('event_bright_registration_link');
+                ?>
+                <div class="row event">
+                    <div class="columns large-7 small-12 event-title-container">
+                        <a href="<?php echo $permalink ?>" class="event-title ba-btn font-messy">
                                 <?php echo $name; ?>
-                            </a> 
-                        </td>
-                        <td class="date">
-                            <p class="ba-btn font-messy">
-                            <?php 
-                                $formattedDate = new DateTime($date);
-                                echo $formattedDate->format('m-d-Y');
-                            ?>
-                            </p>
-                        </td>
-                        <td>
-                            <a href="<?php echo $eventbrightlink; ?>" target="_blank" class="hide-for-small">
-                                <img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="184" alt="Register now"/>
-                            </a>
-                            <a href="<?php echo $eventbrightlink; ?>" target="_blank" class="hide-for-medium-up">
-                                Register
-                            </a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-        </table>
+                        </a>
+                    </div>
+                    <p class="columns large-2 small-12 date"><?php 
+                        $formattedDate = new DateTime($date);
+                        echo $formattedDate->format('F d, Y');
+                        ?>
+                    </p>
+                    <a class="columns large-3 small-12 register-now" href="<?php echo $eventbrightlink; ?>" target="_blank">
+                        <img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="184" alt="Register Now"/>
+                    </a>
+                </div>
+            <?php endwhile; ?>
+        </div>
     </div>
     <!--
     <h2>Past events</h2>
