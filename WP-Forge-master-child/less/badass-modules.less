@@ -4,6 +4,16 @@
 ------------------
 */
 
+/* Panel */
+/*-----------------*/
+
+.ba-panel {
+  background: @white;
+  border-radius: 8px;
+  border: 1px solid @black;
+  box-shadow: -1px 1px 7px @black;
+}
+
 /* Top bar */
 /* This is the main navigation that sticks at the top of the page */
 /*-----------------*/
@@ -70,38 +80,41 @@
           display: none;
         }
 
-        li.home {
-          .transition-in-seconds;
-          .hide-text-indent;
-          height: 56px;
-          margin-left: 8px;
-          margin-top: 4px;
-          width: 195px;
+        li.top-cta {
+          .transition-in-seconds(.2s);
+          height: 62px;
+          text-align: center;
+          width: 215px;
 
           a {
             background: url(../images/logo.png) no-repeat;
-            background-size: 195px;
-            border: 0;
-            line-height: 112px;
-            opacity: .9;
-
+            background-size: 175px;
+            background-position: center 10px;
+            border-radius: 0px 0px 8px 8px;
+            border-color: @transGrey;
+            color: red;
+            height: 162px;
+            font-family: "custom-one";
+            font-size: 30px;
+            padding: 110px 0 0;
+            text-shadow: 1px 1px @black;
+            .transparent-bg(@black);
+            
             &:hover {
-              .transition-in-seconds(0s);
-              opacity: 1;
+              border-color: @brandingYellow;
             }
 
           }
 
           &.after-scroll {
-            .transition-in-seconds;
-            margin-left: 0px;
-            margin-top: 0px;
-            width: 79px;
-            
+            width: 120px;
+
             a {
-              background-position: 0px 6px;
               background-size: 82px;
-              line-height: 56px;
+              font-size: 18px;
+              height: 102px;
+              line-height: 82px;
+              padding: 36px 0 0;
             }
 
           }
@@ -177,7 +190,6 @@
 
 }
 
-/* show-bg-image */
 /* Show background image */
 /*-----------------*/
 
@@ -220,7 +232,6 @@ button.show-bg-image {
       opacity: 1 !important;
     }
   }
-
 }
 
 /* Homepage */
@@ -252,6 +263,14 @@ button.show-bg-image {
 
     }
 
+  }
+
+  /* Latest post */
+  /*-----------------*/
+
+  .latest-post {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Register */
@@ -305,34 +324,6 @@ button.show-bg-image {
       margin-bottom: 18px;
     }
 
-    .latest-post {
-      padding-left: 0;
-      padding-right: 0;
-
-      .post-preview-container {
-        .transparent-bg(@white, .8);
-        border-radius: 8px;
-        box-shadow: -1px 1px 14px #000;
-        margin-bottom: 18px;
-
-        > * {
-          padding-left: 18px;
-          padding-right: 18px;
-        }
-      } 
-
-      h2 {
-        font-size: 24px;
-      }
-
-      .read-more {
-        border-radius: 0px 0px 8px 8px;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-    }
-
     .divisions-container {
       .transparent-bg(@white, .8);
       box-shadow: -1px 1px 14px #000;
@@ -377,10 +368,46 @@ button.show-bg-image {
 
 }
 
+/* Latest post */
+/*-----------------*/
+
+.latest-post {
+
+  .post-preview-container {
+    .ba-panel;
+    margin-bottom: 18px;
+    padding: .7em 0 0 0;
+
+    > * {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  } 
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .date {
+    font-style: italic;
+  }
+
+  .read-more {
+    border-radius: 0px 0px 8px 8px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
 /* Page title */
 /*-----------------*/
 
 .page-title {
+
+  > * {
+    display: inline-block;
+  }
 
   h1 {
     font-size: 7em;
@@ -388,8 +415,14 @@ button.show-bg-image {
     margin: 0;
   }
 
-  h1.smaller-page-title {
+  h1.smaller-page-title { 
     font-size: 4em;
+  }
+
+  span.sub-heading {
+    font-family: "custom-one";
+    font-size: .7em;
+
   }
 
   .date {
@@ -479,6 +512,50 @@ button.show-bg-image {
   }
 }
 
+/* Events table */
+/*-----------------*/
+.events-container {
+
+  > div.row {
+    display: block;
+    padding-bottom: 0;
+    width: 100%;
+  }
+
+  .row {
+    &.event-headings {
+      background: @black;
+      color: @white;
+      font-family: "custom-one";
+      font-size: 24px;
+      padding: 12px;
+    }
+
+    &.event {
+      background: @white;
+      padding: 12px;
+      border-bottom: 1px solid @gray;
+
+      div.event-title-container {
+
+        a.event-title {
+          font-size: 18px;
+          width: 95%;
+        }
+      }
+
+      p.date,
+      a.register-now {
+        margin: 17px 0 0;
+      }
+    }
+  }   
+
+  .columns {
+    padding: 0;
+  }
+}
+
 /* Event content */
 /*-----------------*/
 .single-event-page {
@@ -493,7 +570,6 @@ button.show-bg-image {
     }
 
     .event-content-inner {
-      
       .section-container.tabs {
         p.title a {
           font-size: 1.15em;
@@ -600,7 +676,7 @@ button.show-bg-image {
 
     h1 {
       .transparent-bg(@black, .7);
-      bottom: 0;
+      /*bottom: 0;*/
       color: @brandingYellow;
       font-size: 20px;
       margin: 0;
@@ -1041,36 +1117,6 @@ div.faq-module {
   }
 }
 
-/* Media module */
-/*-----------------*/
-
-.media-module {
-  
-  .post-preview-container {
-    border-bottom: 1px solid lighten(#000, 25%);
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-
-    > * {
-      margin: 0px 0px 12px;
-    }   
-    
-    .post-preview-title {
-      border-bottom: 1px solid lighten(#000, 50%);
-      padding-bottom: .5em;
-    }
-
-    .post-preview-content {
-      line-height: 1.5em;
-    }
-
-    .read-more {
-      display: inline-block;
-    }
-
-  }
-}
-
 /* eModal-1 */
 /*-----------------*/
 
@@ -1141,6 +1187,60 @@ div.faq-module {
         top: 40px;
       }
     } 
+  }
+}
+
+/* Cateogires Menu */
+/*-----------------*/
+
+.widget.widget_nav_menu {
+  .ba-panel;
+
+  ul {
+    .unstyled-ul;
+    
+    li {
+
+      &.media {
+        a {
+          background: lighten(@white, 10%);
+          border-bottom: 1px solid #000;
+          border-radius: 8px 8px 0px 0px;
+          color: @black;
+          font-family: "custom-one";
+          font-size: 2em;
+          line-height: 1em;
+          margin: 0;
+          padding: 0.5em 20px 0.3em;
+        }
+      }
+
+      a {
+        background: @white;
+        border-bottom: 1px solid @black;
+        color: @black;
+        display: block;
+        font-size: 18px;
+        padding: 0.5em 20px 0.3em;
+        
+        &:hover {
+          background: darken(@white, 10%);
+          color: @black;
+        }
+      }
+
+      &:last-child {
+        a {
+          border-radius: 0px 0px 8px 8px; 
+        }
+      }
+      
+      &.active {
+        a {
+          background: darken(@white, 10%);
+        }
+      }
+    }
   }
 }
 
