@@ -1,10 +1,18 @@
 jQuery( document ).ready(function( $ ) {
 
-  console.log('toggle 3');
-
   $('.top-bar .toggle-topbar a').on('click', function(){
-     $('.top-bar-container').toggleClass('expanded-menu');
-     $('#wrapper').toggleClass('expanded-menu');
+
+    if ($('#wrapper').hasClass('expanded-menu')) {
+      $('#wrapper').toggleClass('expanded-menu');
+      setTimeout(function(){            
+        $('.top-bar-container').toggleClass('expanded-menu');
+      }, 1000);
+    } else {
+
+      $('#wrapper').toggleClass('expanded-menu');
+      $('.top-bar-container').toggleClass('expanded-menu');
+    }
+     
   })
 
   /* Trigger event volunteer form */
