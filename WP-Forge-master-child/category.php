@@ -12,40 +12,75 @@
  */
 
 get_header(); ?>
+<div id="content" class="columns small-12 internal-page" role="main">
+	
+	<div class="row internal-header hide-for-small">
+		<div class="badass-banner-ad">
+			<?php echo adrotate_group(1); ?>
+		</div>
+	</div>
 
-	<div id="content" class="large-9 columns" role="main">
-    
-    	<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<ul class="breadcrumbs">','</ul>'); } ?>
+	<div class="row row-no-max-width page-title">
+		<div class="columns small-12 large-12">
+			<h1>MEDIA: <span class="sub-heading"><?php printf( __( '%s', 'wpstarter' ), single_cat_title( '', false ) ); ?></span></h1>
+		</div>
+	</div>
 
 		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'wpstarter' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+		    <?php the_content(); ?>
+		<?php endif; // end of the loop. ?>
 
-			<?php if ( category_description() ) : // Show an optional category description ?>
-				<div class="archive-meta"><?php echo category_description(); ?></div>
-			<?php endif; ?>
-			</header><!-- .archive-header -->
+		<div class="row media-module">
+			<div class="columns large-9 latest-post ">
+				<?php
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+					if (is_category( )) {
+						$cat = get_query_var('cat');
+						$getCatSlug = get_category($cat);
+						$catSlug = $getCatSlug->slug;
+					}
 
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+			    $args = array( 'numberposts' => '-1', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish', 'category_name'=>$catSlug );
+			    $recent_posts = wp_get_recent_posts( $args );
+			    //Now lets do something with these posts
+			    foreach( $recent_posts as $recent )
+			    {
+			        echo '<div class="post-preview-container">';
+			            echo '<h2 class="post-preview-title font-messy">'.$recent["post_title"].'</h2>';
+			            
+			            $postDate = $recent["post_date"];
+			            $postDate = new DateTime($postDate); 
+			            $postDate = $postDate->format('F j, Y');
 
-			endwhile;
+			            echo '<p>Posted on '.$postDate.'</p>';
+			            $parsedContent = strip_tags($recent["post_content"]);
+			            
+			            if (strlen($parsedContent) > 500 ) {
+			                $parsedContent = substr($parsedContent, 0 , 500);
+			                $parsedContent = $parsedContent.'...';
+			            }
 
-			wpforge_content_nav( 'nav-below' );
-			?>
+			            echo '<div class="post-preview-content"><p>'.$parsedContent.'</p></div>';
+			            echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">Read more</a>';
+			        echo '</div>';
+			    }
+				?>
+			</div>
+			<div class="columns large-3 sidebar">
+				<div>
+					<?php get_sidebar(); ?>
+				</div>
+				<div>
+					<a href="/events" class="hide-text-indent" target="_blank">
+						<!--<img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="264" height="44" alt="Register now"/>-->
+					</a>
+				</div>
+				<div class="badass-banner-ad vertical">
+					<?php // echo adrotate_group(2); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- #content -->
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
-
-	</div><!-- #content -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
