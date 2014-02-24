@@ -18,7 +18,6 @@ get_header(); ?>
     
     <div class="row row-no-max-width page-title">
       <div class="columns small-12 large-8">
-      	<a href="/media">< Media</a>
       	<h1 class="smaller-page-title"><?php single_post_title(); ?></h1>
       </div>
       <div class="columns large-3 large-offset-1">
