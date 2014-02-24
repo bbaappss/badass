@@ -23,13 +23,16 @@ get_header(); ?>
             <h1><?php single_post_title(); ?></h1>
         </div>
     </div>
-    
-    <?php while ( have_posts() ) : the_post(); ?>
-        <?php the_content(); ?>
-    <?php endwhile; // end of the loop. ?>
 
+    <div class="row">
+        <div class="columns small-12 ba-panel">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php the_content(); ?>
+            <?php endwhile; // end of the loop. ?>
+        </div>
+    </div>
+    
     <div class="obstacle-module">
-        
         <div class="obstacle-details-container hide">
             <div class="loading-feedback-container hide">
                 <div class="loading-feedback">
@@ -79,7 +82,7 @@ get_header(); ?>
             ?>
         <?php endwhile; ?>
 
-    <div class="row obstacles-container">
+        <div class="row obstacles-container">
             <?php 
                 foreach($obstaclePodArray as $obstacleContent) {
                     $obstacleStringArray = explode(',,', $obstacleContent);
@@ -98,12 +101,21 @@ get_header(); ?>
                     }
                 }
             ?>
-
-    <div class="row row-no-max-width page-title">
+        </div><!-- end of obstacles-container -->
+        
+        <div class="row row-no-max-width page-title">
             <div class="columns small-12">
                 <h1 class="font-messy">K9 COMPANION OBSTACLES</h1>
             </div>
-</div>
+        </div>
+
+        <div class="row">
+            <div class="columns small-12 ba-panel secondary-text">
+                <?php the_field('secondary_text'); ?>
+            </div>
+        </div>
+
+        <div class="row obstacles-container">
             <?php 
                 foreach($obstaclePodArray as $obstacleContent) {
                     $obstacleStringArray = explode(',,', $obstacleContent);
@@ -122,8 +134,8 @@ get_header(); ?>
                     }
                 }
             ?>
-
         </div><!-- end of obstacles-container -->
+        
     </div><!-- end of obstacle-module -->
 </div><!-- #content -->
 
