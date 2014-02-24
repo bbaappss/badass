@@ -1,3 +1,5 @@
+
+
 <?php
 /**
  * Template Name: Front Page Template
@@ -112,9 +114,17 @@ get_header(); ?>
           echo $content_block;
         ?> 
         </div>
+
         <div class="columns small-12 latest-post">
-          <?php
-              $args = array( 'numberposts' => '3', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );
+                      <!--$args = array( 'numberposts' => '3', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );-->
+ <?php $args = array(
+    'numberposts' => '3',
+    'category' => '3',
+    'orderby' => 'post_date',
+    'order' => 'DESC',
+    'post_type' => 'post',
+    'post_status' => 'publish');
+           
               $recent_posts = wp_get_recent_posts( $args );
               //Now lets do something with these posts
               foreach( $recent_posts as $recent )
@@ -135,7 +145,7 @@ get_header(); ?>
                       }
 
                       echo '<div class="post-preview-content"><p>'.$parsedContent.'</p></div>';
-                      echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">Read more</a>';
+                      echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">READ MORE</a>';
                   echo '</div>';
               }
           ?>
