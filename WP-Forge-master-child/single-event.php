@@ -70,17 +70,17 @@ get_header(); ?>
     <div class="row row-no-max-width event-content">
         
         <div class="columns large-9 small-12 event-content-inner">
-            
             <?php $boolCheck = $event_media['0']; ?>
 
             <?php if ( !empty($youtube_code)  || !is_bool($boolCheck) )   : ?>
             <div class="slider-container">
-                <div class="badass-orbit event-page-orbit">
-                    <ul data-orbit data-options="bullets:false; slide_number: false; swipe: false; timer: false;">
-                        <?php if ( !empty($youtube_code) )  : ?>
+            <?php putRevSlider( "general-event-slider" ) ?>
+              	<div class="badass-orbit event-page-orbit">
+                    <!--<ul data-orbit data-options="bullets:false; slide_number: false; swipe: false; timer: false;">
+                    	<?php if ( !empty($youtube_code) )  : ?>
                             <li>
-                                <iframe style="width: 100%; height: 100%; z-index: 100" src="//www.youtube.com/embed/<?php echo $youtube_code; ?>" frameborder="0" allowfullscreen></iframe>
-                            </li>
+	                    		<iframe style="width: 100%; height: 100%; z-index: 100" src="//www.youtube.com/embed/<?php echo $youtube_code; ?>" frameborder="0" allowfullscreen></iframe>
+	                    	</li>
                         <?php endif; ?>
                         <?php if (!is_bool($boolCheck))  : ?>
                             <?php foreach ( $event_media as $attachment ): ?>
@@ -91,8 +91,8 @@ get_header(); ?>
                             </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                    </ul>
-                </div>
+                    </ul>-->
+          		</div>
             </div>
             <?php endif; ?>
 
@@ -163,63 +163,8 @@ get_header(); ?>
                 <button class="ba-btn btn-large font-messy volunteer-form-trigger">VOLUNTEER</button>
                 <div class="volunteer-form">
                     <p>The BADASS Dash is always looking for good volunteers that are BADASS in their own way and are looking for the experience of a lifetime. Each Volunteer will receive a BADASS Dash™ t-shirt and be provided with drinks / snacks.</p>
-                    <p><strong>Sign up below!</strong></p>
-                    <!-- Begin MailChimp Signup Form -->
-                    <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
-                    <style type="text/css">
-                      #mc_embed_signup{ clear:left; width: 100%; height:auto;}
-                    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                    </style>
-                    <div id="mc_embed_signup">
-                    <form action="http://badassdash.us3.list-manage1.com/subscribe/post?u=8becebe28830f04ca44a8f22a[&]id=fc6cd40047" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <div class="mc-field-group">
-                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                        </label>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                        </div>
-                        <div class="mc-field-group">
-                        <label for="mce-FNAME">First Name  <span class="asterisk">*</span>
-                        </label>
-                        <input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
-                        </div>
-                        <div class="mc-field-group">
-                        <label for="mce-LNAME">Last Name  <span class="asterisk">*</span>
-                        </label>
-                        <input type="text" value="" name="LNAME" class="required" id="mce-LNAME">
-                        </div>
-                        <div class="mc-field-group">
-                        <label for="mce-MMERGE3">City  <span class="asterisk">*</span>
-                        </label>
-                        <input type="text" value="" name="MMERGE3" class="required" id="mce-MMERGE3">
-                        </div>
-                        <div class="mc-field-group">
-                        <label for="mce-MMERGE4">State  <span class="asterisk">*</span>
-                        </label>
-                        <input type="text" value="" name="MMERGE4" class="required" id="mce-MMERGE4">
-                        </div>
-                        <div class="mc-field-group">
-                        <label for="mce-MMERGE5">Race Location
-                        </label>
-                        <select name="MMERGE5" class="required" id="mce-MMERGE5">
-                        <option value=""></option>
-                        <option value="Atlanta">Atlanta</option>
-                        <option value="Chicago">Chicago</option>
-                        <option value="Las Vegas">Las Vegas</option>
-                        <option value="Toronto, ON">Toronto, ON</option>
-                        <option value="Ohio">Ohio</option>
-                        <option value="New Jersey / Philadelphia ">New Jersey / Philadelphia </option>
-                        <option value="West Chicago ">West Chicago</option>
-                        <option value="Ottawa, ON ">Ottawa, ON</option>
-                        </select>
-                        </div>
-                        <div id="mce-responses" class="clear">
-                        <div class="response" id="mce-error-response" style="display:none"></div>
-                        <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>  <div class="clear"><input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                    </form>
-                    </div>
-                    <!--End mc_embed_signup-->
+                    <p><strong>SIGN UP TO VOLUNTEER BELOW</strong></p>
+<?php echo do_shortcode( ' [contact-form-7 id="925" title="Contact form_copy"]' ); ?>
                 </div>
             </div>
             <div>
