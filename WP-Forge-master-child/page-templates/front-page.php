@@ -28,7 +28,7 @@ get_header(); ?>
         $frontPageCarouselPod->find('name ASC');      
     ?>
     <div class="badass-orbit front-page-orbit">
-      <ul data-orbit data-options="bullets: false; slide_number: false; swipe: false; timer: false;">
+      <!--<ul data-orbit data-options="bullets: false; slide_number: false; swipe: false; timer: false;">-->
         <?php while ( $frontPageCarouselPod->fetch() ) : ?> 
         <?php
             $id                   = $frontPageCarouselPod->ID();
@@ -40,13 +40,15 @@ get_header(); ?>
             $secondary_headline   = $frontPageCarouselPod->field('front_page_slide_secondary_headline');
             $paragraph            = $frontPageCarouselPod->field('front_page_slide_paragraph');
         ?>
-        <li>
+        <!--<li>
           <a href="<?php echo $link; ?>" class="clickable-slide">
             <?php echo pods_image($media, '598x264'); ?>
           </a>
         </li>
         <?php endwhile; ?>
-      </ul>
+      </ul>-->
+       <?php putRevSlider("test-slider") ?>
+
     </div>
     <?php
         $frontPageRowPod = pods('front_page_row');
@@ -112,9 +114,17 @@ get_header(); ?>
           echo $content_block;
         ?> 
         </div>
+
         <div class="columns small-12 latest-post">
-          <?php
-              $args = array( 'numberposts' => '3', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );
+                      <!--$args = array( 'numberposts' => '3', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );-->
+ <?php $args = array(
+    'numberposts' => '3',
+    'category' => '3',
+    'orderby' => 'post_date',
+    'order' => 'DESC',
+    'post_type' => 'post',
+    'post_status' => 'publish');
+           
               $recent_posts = wp_get_recent_posts( $args );
               //Now lets do something with these posts
               foreach( $recent_posts as $recent )
@@ -135,7 +145,7 @@ get_header(); ?>
                       }
 
                       echo '<div class="post-preview-content"><p>'.$parsedContent.'</p></div>';
-                      echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">Read more</a>';
+                      echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">READ MORE</a>';
                   echo '</div>';
               }
           ?>
