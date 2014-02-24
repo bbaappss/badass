@@ -1,5 +1,3 @@
-
-
 <?php
 /**
  * Template Name: Front Page Template
@@ -30,7 +28,7 @@ get_header(); ?>
         $frontPageCarouselPod->find('name ASC');      
     ?>
     <div class="badass-orbit front-page-orbit">
-      <ul data-orbit data-options="bullets: false; slide_number: false; swipe: false; timer: false;">
+      <!--<ul data-orbit data-options="bullets: false; slide_number: false; swipe: false; timer: false;">-->
         <?php while ( $frontPageCarouselPod->fetch() ) : ?> 
         <?php
             $id                   = $frontPageCarouselPod->ID();
@@ -42,13 +40,15 @@ get_header(); ?>
             $secondary_headline   = $frontPageCarouselPod->field('front_page_slide_secondary_headline');
             $paragraph            = $frontPageCarouselPod->field('front_page_slide_paragraph');
         ?>
-        <li>
+        <!--<li>
           <a href="<?php echo $link; ?>" class="clickable-slide">
             <?php echo pods_image($media, '598x264'); ?>
           </a>
         </li>
         <?php endwhile; ?>
-      </ul>
+      </ul>-->
+       <?php putRevSlider("test-slider") ?>
+
     </div>
     <?php
         $frontPageRowPod = pods('front_page_row');
@@ -136,7 +136,7 @@ get_header(); ?>
                       $postDate = new DateTime($postDate); 
                       $postDate = $postDate->format('F j, Y');
 
-                      echo '<p>Posted on '.$postDate.'</p>';
+                      echo '<p>'.$postDate.'</p>';
                       $parsedContent = strip_tags($recent["post_content"]);
                       
                       if (strlen($parsedContent) > 500 ) {

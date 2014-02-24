@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Template Name: Media Page Template
@@ -30,21 +29,25 @@ get_header(); ?>
     <?php endwhile; // end of the loop. ?>
     
     <div class="row media-module">
-        <div class="columns large-9">
+        <div class="columns large-9 latest-post">
             <?php
-                $args = array( 'numberposts' => '-1', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );
+                $args = array( 'numberposts' => '5', 'orderby' => 'post_date', 'order' => 'DESC','post_status' => 'publish' );
                 $recent_posts = wp_get_recent_posts( $args );
                 //Now lets do something with these posts
                 foreach( $recent_posts as $recent )
                 {
                     echo '<div class="post-preview-container">';
-                        echo '<h2 class="post-preview-title">'.$recent["post_title"].'</h2>';
+                        echo '<h2 class="post-preview-title font-messy">'.$recent["post_title"].'</h2>';
+
+                        $categories = get_the_category($recent["ID"]);
+                        
+                        echo '<p class="media-type">'. $categories[0]->cat_name . '</p>';
                         
                         $postDate = $recent["post_date"];
                         $postDate = new DateTime($postDate); 
                         $postDate = $postDate->format('F j, Y');
 
-                        echo '<p>Posted on '.$postDate.'</p>';
+                        echo '<p class="date">'.$postDate.'</p>';
                         $parsedContent = strip_tags($recent["post_content"]);
                         
                         if (strlen($parsedContent) > 500 ) {
@@ -68,10 +71,9 @@ get_header(); ?>
                 </a>
             </div>
             <div class="badass-banner-ad vertical">
-                <?php // echo adrotate_group(2); ?>
+                <?php echo adrotate_group(2); ?>
             </div>
         </div>
     </div>
-    
 </div><!-- #content -->
 <?php get_footer(); ?>

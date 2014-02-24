@@ -23,13 +23,16 @@ get_header(); ?>
             <h1><?php single_post_title(); ?></h1>
         </div>
     </div>
-    
-    <?php while ( have_posts() ) : the_post(); ?>
-        <?php the_content(); ?>
-    <?php endwhile; // end of the loop. ?>
 
+    <div class="row">
+        <div class="columns small-12 ba-panel">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php the_content(); ?>
+            <?php endwhile; // end of the loop. ?>
+        </div>
+    </div>
+    
     <div class="obstacle-module">
-        
         <div class="obstacle-details-container hide">
             <div class="loading-feedback-container hide">
                 <div class="loading-feedback">
@@ -71,7 +74,7 @@ get_header(); ?>
                 $permalink  = get_permalink( $id );
                 $name       = $obstaclePod->field('name');
                 $image      = $obstaclePod->field('obstacle_featured_image');
-                $image      = pods_image($image, '300x210-no-crop');
+                $image      = pods_image($image, '300x210');
                 $videoEmbed = $obstaclePod->field('video_embed_code');
                 $k9Check    = $obstaclePod->field('k_9_obstacle');
                 $obstacleString  = $k9Check . ',,' . $permalink . ',,' . $name . ',,' . $image . ',,' . $videoEmbed;
@@ -79,7 +82,8 @@ get_header(); ?>
             ?>
         <?php endwhile; ?>
 
-    <div class="row obstacles-container">
+
+        <div class="row obstacles-container">
             <?php 
                 foreach($obstaclePodArray as $obstacleContent) {
                     $obstacleStringArray = explode(',,', $obstacleContent);
@@ -99,27 +103,42 @@ get_header(); ?>
                 }
             ?>
 
-<!--COMMENTING OUT K9 DIVISION OBSTACLES UNTIL BRANDON FIXES-->
-
-    <!--<div class="row row-no-max-width page-title">
+        </div><!-- end of obstacles-container -->
+        
+        <div class="row row-no-max-width page-title">
             <div class="columns small-12">
                 <h1 class="font-messy">K9 COMPANION OBSTACLES</h1>
             </div>
-</div>
- <?php
-$args = array( 'posts_per_page' => 10, 'order'=> 'ASC', 'orderby' => 'title' );
-$postslist = get_posts( $args );
-foreach ( $postslist as $post ) :
-  setup_postdata( $post ); ?> 
-	<div>  
-		<?php the_excerpt(); ?>
-	</div>
-<?php
-endforeach; 
-wp_reset_postdata();
-?>
-    </div>--><!-- end of obstacle-module -->
-     
+        </div>
+
+        <div class="row">
+            <div class="columns small-12 ba-panel secondary-text">
+                <?php the_field('secondary_text'); ?>
+            </div>
+        </div>
+
+        <div class="row obstacles-container">
+            <?php 
+                foreach($obstaclePodArray as $obstacleContent) {
+                    $obstacleStringArray = explode(',,', $obstacleContent);
+                    if ($obstacleStringArray[0] == '1') {
+                        echo '<div class="columns small-12 medium-6 large-4">';
+                        echo '<div class="obstacle-selection">';
+                        echo '<a href="#">';
+                        echo '<span class="permalink hide">'.$obstacleStringArray[1].'</span>';
+                        echo '<div class="background-image">';
+                        echo $obstacleStringArray[3];
+                        echo '</div>';
+                        echo '<h1>'.$obstacleStringArray[2].'</h1>';
+                        echo '</a>';
+                        echo '</div>';                            
+                        echo '</div>';                            
+                    }
+                }
+            ?>
+        </div><!-- end of obstacles-container -->
+        
+    </div><!-- end of obstacle-module -->
 </div><!-- #content -->
 
 <?php get_footer(); ?>

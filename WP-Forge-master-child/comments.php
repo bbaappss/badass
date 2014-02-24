@@ -1,136 +1,60 @@
-ORIGINAL OBSTACLES PAGE TEMPLATE
-
-
 <?php
 /**
- * Template Name: Obstacles Page Template
+ * The template for displaying Comments.
  *
- * Description: This is the template for the obstacles page
+ * The area of the page that contains both current comments
+ * and the comment form. The actual display of comments is
+ * handled by a callback to wpstarter_comment() which is
+ * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage WP_Starter
- * @since BADASS Dash 1.0
+ * @subpackage WP_Forge
+ * @since WP-Forge 1.0
  */
 
-get_header(); ?>
-<div id="content" class="internal-page columns small-12" role="main">
-    <div class="row internal-header hide-for-small">
-        <div class="badass-banner-ad">
-            <?php echo adrotate_group(1); ?>
-        </div>
-        
-    </div>
-    
-    <div class="row row-no-max-width page-title">
-        <div class="columns small-12 large-8">
-            <h1><?php single_post_title(); ?></h1>
-        </div>
-    </div>
-    
-    <?php while ( have_posts() ) : the_post(); ?>
-        <?php the_content(); ?>
-    <?php endwhile; // end of the loop. ?>
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() )
+	return;
+?>
 
-    <div class="obstacle-module">
-        
-        <div class="obstacle-details-container hide">
-            <div class="loading-feedback-container hide">
-                <div class="loading-feedback">
-                    <div class="trans-bg"></div>
-                    <div id="floatingBarsG">
-                        <div class="blockG" id="rotateG_01">
-                        </div>
-                        <div class="blockG" id="rotateG_02">
-                        </div>
-                        <div class="blockG" id="rotateG_03">
-                        </div>
-                        <div class="blockG" id="rotateG_04">
-                        </div>
-                        <div class="blockG" id="rotateG_05">
-                        </div>
-                        <div class="blockG" id="rotateG_06">
-                        </div>
-                        <div class="blockG" id="rotateG_07">
-                        </div>
-                        <div class="blockG" id="rotateG_08">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <?php
-            $params = array (
-                'limit' => -1,
-                'orderby' => 'name ASC'      
-            );
-            $obstaclePod = pods('obstacle', $params);
-            $obstaclePodArray = array();
-        ?>
-        
-        <?php while ( $obstaclePod->fetch() ) : ?> 
-            <?php
-                $id         = $obstaclePod->ID();
-                $permalink  = get_permalink( $id );
-                $name       = $obstaclePod->field('name');
-                $image      = $obstaclePod->field('obstacle_featured_image');
-                $image      = pods_image($image, '300x210');
-                $videoEmbed = $obstaclePod->field('video_embed_code');
-                $k9Check    = $obstaclePod->field('k_9_obstacle');
-                $obstacleString  = $k9Check . ',,' . $permalink . ',,' . $name . ',,' . $image . ',,' . $videoEmbed;
-                $obstaclePodArray[] = $obstacleString;
-            ?>
-        <?php endwhile; ?>
+<div id="comments" class="comments-area">
 
-    <div class="row obstacles-container">
-            <?php 
-                foreach($obstaclePodArray as $obstacleContent) {
-                    $obstacleStringArray = explode(',,', $obstacleContent);
-                    if ($obstacleStringArray[0] !== '1') {
-                        echo '<div class="columns small-12 medium-6 large-4">';
-                        echo '<div class="obstacle-selection">';
-                        echo '<a href="#">';
-                        echo '<span class="permalink hide">'.$obstacleStringArray[1].'</span>';
-                        echo '<div class="background-image">';
-                        echo $obstacleStringArray[3];
-                        echo '</div>';
-                        echo '<h1>'.$obstacleStringArray[2].'</h1>';
-                        echo '</a>';
-                        echo '</div>';                            
-                        echo '</div>';                            
-                    }
-                }
-            ?>
+	<?php // You can start editing here -- including this comment! ?>
 
-    <div class="row row-no-max-width page-title">
-            <div class="columns small-12">
-                <h1 class="font-messy">K9 COMPANION OBSTACLES</h1>
-            </div>
-</div>
-      <div class="columns small-12 large-4 sponsors">
-ajdfks;jdsaf;adjsf;dsafjkdk
-jkds;ajfkl;adjsf;djkas;kfjads;fjdsa;kfjsdkal;fjdklsafjkdsla;fj
-           <!-- <?php 
-                foreach($obstaclePodArray as $obstacleContent) {
-                    $obstacleStringArray = explode(',,', $obstacleContent);
-                    if ($obstacleStringArray[0] == '1') {
-                        echo '<div class="columns small-12 medium-6 large-4">';
-                        echo '<div class="obstacle-selection">';
-                        echo '<a href="#">';
-                        echo '<span class="permalink hide">'.$obstacleStringArray[1].'</span>';
-                        echo '<div class="background-image">';
-                        echo $obstacleStringArray[3];
-                        echo '</div>';
-                        echo '<h1>'.$obstacleStringArray[2].'</h1>';
-                        echo '</a>';
-                        echo '</div>';                            
-                        echo '</div>';                            
-                    }
-                }
-            ?> --> 
+	<?php if ( have_comments() ) : ?>
+		<h2 class="comments-title">
+			<?php
+				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'wpstarter' ),
+					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+			?>
+		</h2>
 
-        </div><!-- end of obstacles-container -->
-    </div><!-- end of obstacle-module -->
-</div><!-- #content -->
+		<ol class="commentlist">
+			<?php wp_list_comments( array( 'callback' => 'wpforge_comment', 'style' => 'ol' ) ); ?>
+		</ol><!-- .commentlist -->
 
-<?php get_footer(); ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav id="comment-nav-below" class="navigation" role="navigation">
+			<h1 class="assistive-text section-heading"><?php _e( 'Comment navigation', 'wpstarter' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'wpstarter' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'wpstarter' ) ); ?></div>
+		</nav>
+		<?php endif; // check for comment navigation ?>
+
+		<?php
+		/* If there are no comments and comments are closed, let's leave a note.
+		 * But we only want the note on posts and pages that had comments in the first place.
+		 */
+		if ( ! comments_open() && get_comments_number() ) : ?>
+		<p class="nocomments"><?php _e( 'Comments are closed.' , 'wpstarter' ); ?></p>
+		<?php endif; ?>
+
+	<?php endif; // have_comments() ?>
+
+	<?php comment_form(	array('comment_notes_after' => ' ',)); ?>
+
+</div><!-- #comments .comments-area -->
