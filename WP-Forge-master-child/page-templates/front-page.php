@@ -59,9 +59,7 @@ get_header(); ?>
               }
           ?>
           <?php 
-            //get Pods object for current post
             $featuredContentBlockPod = pods( 'featured_content_blo');
-            //get the value for the relationship field
             $featuredContentBlockPod->find('name ASC'); 
           ?>
           <?php while ( $featuredContentBlockPod->fetch() ) : ?> 
