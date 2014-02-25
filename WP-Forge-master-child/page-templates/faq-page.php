@@ -10,13 +10,13 @@
  */
 
 get_header(); ?>
-<?php
 
+<?php
     function startsWithNumber($string) {
         return preg_match('/^\d/', $string) === 1;
     }
-
 ?>
+
 <div id="content" class="internal-page large-12 columns" role="main">
     <div class="row internal-header hide-for-small">
         <div class="badass-banner-ad">
