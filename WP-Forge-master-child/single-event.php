@@ -68,7 +68,6 @@ get_header(); ?>
         </div>
     </div>
     <div class="row row-no-max-width event-content">
-        
         <div class="columns large-9 small-12 event-content-inner">
             <?php $boolCheck = $event_media['0']; ?>
 
