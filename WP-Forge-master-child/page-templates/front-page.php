@@ -28,27 +28,7 @@ get_header(); ?>
         $frontPageCarouselPod->find('name ASC');      
     ?>
     <div class="badass-orbit front-page-orbit">
-      <!--<ul data-orbit data-options="bullets: false; slide_number: false; swipe: false; timer: false;">-->
-        <?php while ( $frontPageCarouselPod->fetch() ) : ?> 
-        <?php
-            $id                   = $frontPageCarouselPod->ID();
-            $permalink            = get_permalink( $id );
-            $name                 = $frontPageCarouselPod->field('name');
-            $link                 = $frontPageCarouselPod->field('front_page_slide_link');
-            $media                = $frontPageCarouselPod->field('front_page_slide_media');
-            $headline             = $frontPageCarouselPod->field('front_page_slide_headline');
-            $secondary_headline   = $frontPageCarouselPod->field('front_page_slide_secondary_headline');
-            $paragraph            = $frontPageCarouselPod->field('front_page_slide_paragraph');
-        ?>
-        <!--<li>
-          <a href="<?php echo $link; ?>" class="clickable-slide">
-            <?php echo pods_image($media, '598x264'); ?>
-          </a>
-        </li>
-        <?php endwhile; ?>
-      </ul>-->
        <?php putRevSlider("test-slider") ?>
-
     </div>
     <?php
         $frontPageRowPod = pods('front_page_row');
