@@ -33,6 +33,7 @@ get_header(); ?>
             $google_map = get_post_meta($post->ID, 'google_map', true);
             $parking_details = get_post_meta($post->ID, 'parking_details', true);
             $event_right_block_1 = get_post_meta($post->ID, 'event_right_block_1', true);
+            $volunteer_form_code = get_post_meta($post->ID, 'volunteer_form_code', true);
 
             //get Pods object for current post
             $eventPod = pods( 'event', get_the_id() );
@@ -163,8 +164,8 @@ get_header(); ?>
                 <div class="volunteer-form">
                     <p>The BADASS Dash is always looking for good volunteers that are BADASS in their own way and are looking for the experience of a lifetime. Each Volunteer will receive a BADASS Dash™ t-shirt and be provided with drinks / snacks.</p>
                     <p><strong>SIGN UP TO VOLUNTEER BELOW</strong></p>
-<?php echo do_shortcode( ' [contact-form-7 id="925" title="Contact form_copy"]' ); ?>
                 </div>
+                <?php echo $volunteer_form_code; ?> 
             </div>
             <div>
                 <h2>Partners</h2>
