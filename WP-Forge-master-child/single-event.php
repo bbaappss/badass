@@ -74,37 +74,18 @@ get_header(); ?>
 
             <?php if ( !empty($youtube_code)  || !is_bool($boolCheck) )   : ?>
             <div class="slider-container">
-            <?php putRevSlider( "general-event-slider" ) ?>
-              	<div class="badass-orbit event-page-orbit">
-                    <!--<ul data-orbit data-options="bullets:false; slide_number: false; swipe: false; timer: false;">
-                    	<?php if ( !empty($youtube_code) )  : ?>
-                            <li>
-	                    		<iframe style="width: 100%; height: 100%; z-index: 100" src="//www.youtube.com/embed/<?php echo $youtube_code; ?>" frameborder="0" allowfullscreen></iframe>
-	                    	</li>
-                        <?php endif; ?>
-                        <?php if (!is_bool($boolCheck))  : ?>
-                            <?php foreach ( $event_media as $attachment ): ?>
-                            <li>
-                                <div class="cropped-image-slide">
-                                    <img src="<?php echo pods_image_url($attachment, '598x264'); ?>" />
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </ul>-->
-          		</div>
+                <?php putRevSlider( "general-event-slider" ) ?>
             </div>
             <?php endif; ?>
 
-
             <div class="section-container tabs" data-section="tabs">
-                <section class="active">
+                <section class="information active">
                     <p class="title" data-section-title><a href="#panel1">EVENT INFORMATION</a></p>
                     <div class="content" data-section-content>
                         <?php the_content(); ?>
                     </div>
                 </section>
-                <section>
+                <section class="location">
                     <p class="title" data-section-title><a href="#panel1" class="load-map">LOCATION</a></p>
                     <div class="content" data-section-content>
                         <div class="location">
@@ -121,7 +102,7 @@ get_header(); ?>
                         </div>
                     </div>
                 </section>
-                <section>
+                <section class="pricing">
                     <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
                     <div class="content" data-section-content>
                         <div class="pricing">
@@ -149,7 +130,7 @@ get_header(); ?>
                 <div class="countdown event-countdown styled"></div>
             </div>
 
-            <div>
+            <div class="ba-panel">
                 <?php
                     echo $event_right_block_1;
                 ?>
@@ -164,8 +145,8 @@ get_header(); ?>
                 <div class="volunteer-form">
                     <p>The BADASS Dash is always looking for good volunteers that are BADASS in their own way and are looking for the experience of a lifetime. Each Volunteer will receive a BADASS Dash™ t-shirt and be provided with drinks / snacks.</p>
                     <p><strong>SIGN UP TO VOLUNTEER BELOW</strong></p>
+                    <?php echo $volunteer_form_code; ?> 
                 </div>
-                <?php echo $volunteer_form_code; ?> 
             </div>
             <div>
                 <h2>Partners</h2>
