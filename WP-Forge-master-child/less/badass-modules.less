@@ -278,7 +278,6 @@ button.show-bg-image {
 /*-----------------*/
 
 .homepage-container {
-  padding-top: 20px;
 
   h1.entry-title {
     display: none;
@@ -478,7 +477,7 @@ button.show-bg-image {
   }
 
   > div {
-    padding: 0px 0px 12px;
+    margin: 0px 0px 12px;
   }
   
   ul {
@@ -521,7 +520,7 @@ button.show-bg-image {
 
 }
 
-/* Event content */
+/* Events page */
 /*-----------------*/
 
 .event-selection {
@@ -574,11 +573,58 @@ button.show-bg-image {
   }
 }
 
-/* Event content */
+/* Single event page */
 /*-----------------*/
 .single-event-page {
   .event-content {
     
+    .section-container.tabs {
+      section {
+
+        &:first-child{
+          .title {
+            border-radius: 8px 0px 0px 0px;
+          }
+        }
+
+        &:last-child{
+          .title {
+            border-radius: 0px 8px 0px 0px;
+          }
+        }
+
+        &.active {
+          .title {
+            background: @white;
+            
+            a {
+              color: @gray;
+              cursor: default;
+            }
+
+            &:hover {
+              cursor: default;
+              background: @white;
+            }
+          }
+        }
+
+        .title {
+          background: @gray;
+          a {
+            color: @brandingYellow;
+            font-weight: light;
+          }
+          
+          &:hover {
+            background: darken(@gray, 10%);
+          }
+
+        }
+
+      }
+    }
+
     .location {
       .google-map {
         iframe {
