@@ -70,32 +70,9 @@ get_header(); ?>
     <div class="row row-no-max-width event-content">
         
         <div class="columns large-9 small-12 event-content-inner">
-            <?php $boolCheck = $event_media['0']; ?>
-
-            <?php if ( !empty($youtube_code)  || !is_bool($boolCheck) )   : ?>
             <div class="slider-container">
             <?php putRevSlider( "general-event-slider" ) ?>
-              	<div class="badass-orbit event-page-orbit">
-                    <!--<ul data-orbit data-options="bullets:false; slide_number: false; swipe: false; timer: false;">
-                    	<?php if ( !empty($youtube_code) )  : ?>
-                            <li>
-	                    		<iframe style="width: 100%; height: 100%; z-index: 100" src="//www.youtube.com/embed/<?php echo $youtube_code; ?>" frameborder="0" allowfullscreen></iframe>
-	                    	</li>
-                        <?php endif; ?>
-                        <?php if (!is_bool($boolCheck))  : ?>
-                            <?php foreach ( $event_media as $attachment ): ?>
-                            <li>
-                                <div class="cropped-image-slide">
-                                    <img src="<?php echo pods_image_url($attachment, '598x264'); ?>" />
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </ul>-->
-          		</div>
             </div>
-            <?php endif; ?>
-
 
             <div class="section-container tabs" data-section="tabs">
                 <section class="active">
