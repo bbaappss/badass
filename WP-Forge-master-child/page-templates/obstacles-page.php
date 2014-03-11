@@ -74,7 +74,8 @@ get_header(); ?>
                 $permalink  = get_permalink( $id );
                 $name       = $obstaclePod->field('name');
                 $image      = $obstaclePod->field('obstacle_featured_image');
-                $image      = pods_image($image, '300x210');
+                // $image      = pods_image($image, '300x210');
+                $image      = pods_image($image, '300x300');
                 $videoEmbed = $obstaclePod->field('video_embed_code');
                 $k9Check    = $obstaclePod->field('k_9_obstacle');
                 $obstacleString  = $k9Check . ',,' . $permalink . ',,' . $name . ',,' . $image . ',,' . $videoEmbed;
