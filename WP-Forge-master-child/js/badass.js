@@ -1,5 +1,9 @@
 jQuery( document ).ready(function( $ ) {
 
+  var is_touch_device = 'ontouchstart' in document.documentElement;
+
+  console.log(is_touch_device);
+
   $('.top-bar .toggle-topbar a').on('click', function(){
 
     if ($('#wrapper').hasClass('expanded-menu')) {

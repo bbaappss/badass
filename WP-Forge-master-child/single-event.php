@@ -34,6 +34,10 @@ get_header(); ?>
             $parking_details = get_post_meta($post->ID, 'parking_details', true);
             $event_right_block_1 = get_post_meta($post->ID, 'event_right_block_1', true);
             $volunteer_form_code = get_post_meta($post->ID, 'volunteer_form_code', true);
+            $custom_tab_title_1 = get_post_meta($post->ID, 'custom_tab_title_1', true);
+            $custom_tab_content_1 = get_post_meta($post->ID, 'custom_tab_content_1', true);
+            $custom_tab_title_2 = get_post_meta($post->ID, 'custom_tab_title_2', true);
+            $custom_tab_content_2 = get_post_meta($post->ID, 'custom_tab_content_2', true);
 
             //get Pods object for current post
             $eventPod = pods( 'event', get_the_id() );
@@ -110,6 +114,34 @@ get_header(); ?>
                         </div>
                     </div>
                 </section>
+                <?php if (!empty($custom_tab_title_1) && (!empty($custom_tab_content_1))) : ?>
+                    <section class="<?php echo $custom_tab_title_1; ?>">
+                        <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_1; ?></a></p>
+                        <div class="content" data-section-content>
+                            <div class="<?php echo $custom_tab_title_1; ?>">
+                                <?php echo $custom_tab_content_1; ?>
+                            </div>
+                        </div>
+                    </section>
+                <?php endif; ?>
+                <?php if (!empty($custom_tab_title_2) && (!empty($custom_tab_content_2))) : ?>
+                    <section class="<?php echo $custom_tab_title_2; ?>">
+                        <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_2; ?></a></p>
+                        <div class="content" data-section-content>
+                            <div class="<?php echo $custom_tab_title_2; ?>">
+                                <?php echo $custom_tab_content_2; ?>
+                            </div>
+                        </div>
+                    </section>
+                <?php endif; ?>
+                <!-- <section class="pricing">
+                    <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
+                    <div class="content" data-section-content>
+                        <div class="pricing">
+                            <?php echo $event_pricing; ?>
+                        </div>
+                    </div>
+                </section> -->
             </div>
         </div>
 
