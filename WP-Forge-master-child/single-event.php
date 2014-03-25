@@ -57,7 +57,8 @@ get_header(); ?>
                 ?>
             </h2>
         </div>
-        <div class="columns large-3 small-12">
+        <!-- Comment out social media share boxes -->
+        <!-- <div class="columns large-3 small-12">
             <div class="social-media-hori-share">
                 <div class="facebook">
                     <div class="fb-like" data-href="http://fasdfd.com" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
@@ -70,7 +71,7 @@ get_header(); ?>
                     <a href="//www.pinterest.com/pin/create/button/?url=badassdash.com&media=http%3A%2F%2Fbadass.com%2Fimage.png&description=baddass%20description" data-pin-do="buttonPin" data-pin-config="above" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_28.png" /></a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row row-no-max-width event-content">
         <div class="columns large-9 small-12 event-content-inner">
