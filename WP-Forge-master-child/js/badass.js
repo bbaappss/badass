@@ -75,47 +75,50 @@ jQuery( document ).ready(function( $ ) {
 
     $('#wrapper').addClass('front-page');
 
-    /* Auto pop-up newsletter dialogue */
-    /*-----------------*/
+    if (!is_touch_device) {
 
-    function getModalExpireDateCookie(name) {
-      var ca = document.cookie.split(';');
+      /* Auto pop-up newsletter dialogue */
+      /*-----------------*/
 
-      for (var i=0; i < ca.length; i++) {
-        var c = ca[i].trim();
-        if (c.indexOf(name)==0) {
-          return c.substring(name.length+1,c.length);
+      function getModalExpireDateCookie(name) {
+        var ca = document.cookie.split(';');
+
+        for (var i=0; i < ca.length; i++) {
+          var c = ca[i].trim();
+          if (c.indexOf(name)==0) {
+            return c.substring(name.length+1,c.length);
+          }
         }
+        return null;
       }
-      return null;
-    }
 
-    var modalExpireDate= getModalExpireDateCookie("NEWSLETTERMODALEXPIRE");
+      var modalExpireDate= getModalExpireDateCookie("NEWSLETTERMODALEXPIRE");
 
-    var rightNow = new Date();
+      var rightNow = new Date();
 
-    rightNow = rightNow.getTime();
+      rightNow = rightNow.getTime();
 
-    rightNow = Number(rightNow);    
+      rightNow = Number(rightNow);    
 
 
-    if (modalExpireDate !== null) {
-      modalExpireDate = Number(modalExpireDate);
-    }
+      if (modalExpireDate !== null) {
+        modalExpireDate = Number(modalExpireDate);
+      }
 
-    if ( modalExpireDate == null || modalExpireDate < rightNow) {
-      
-      setTimeout(function(){            
+      if ( modalExpireDate == null || modalExpireDate < rightNow) {
+        
+        setTimeout(function(){            
 
-        // Trigger clicking of the newsletter link
-        $('.eModal-1').trigger('click');
+          // Trigger clicking of the newsletter link
+          $('.eModal-1').trigger('click');
 
-        // Set NEWSLETTERMODALEXPIRE cookie
-        var expireDate = rightNow + 36000000;
-        document.cookie="NEWSLETTERMODALEXPIRE="+expireDate;
+          // Set NEWSLETTERMODALEXPIRE cookie
+          var expireDate = rightNow + 36000000;
+          document.cookie="NEWSLETTERMODALEXPIRE="+expireDate;
 
-      }, 2500);
+        }, 2500);
 
+      }
     }
 
   }
