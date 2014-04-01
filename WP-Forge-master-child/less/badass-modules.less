@@ -590,59 +590,61 @@ div.content {
   }
 }
 
+/* Tabs */
+/*-----------------*/
+
+.section-container.tabs {
+  section {
+
+    &:first-child{
+      .title {
+        border-radius: 8px 0px 0px 0px;
+      }
+    }
+
+    &:last-child{
+      .title {
+        border-radius: 0px 8px 0px 0px;
+      }
+    }
+
+    &.active {
+      .title {
+        background: @white;
+        
+        a {
+          color: @gray;
+          cursor: default;
+        }
+
+        &:hover {
+          cursor: default;
+          background: @white;
+        }
+      }
+    }
+
+    .title {
+      background: @gray;
+      a {
+        color: @brandingYellow;
+        font-weight: light;
+        text-transform: uppercase;
+      }
+      
+      &:hover {
+        background: darken(@gray, 10%);
+      }
+
+    }
+
+  }
+}
+
 /* Single event page */
 /*-----------------*/
 .single-event-page {
   .event-content {
-    
-    .section-container.tabs {
-      section {
-
-        &:first-child{
-          .title {
-            border-radius: 8px 0px 0px 0px;
-          }
-        }
-
-        &:last-child{
-          .title {
-            border-radius: 0px 8px 0px 0px;
-          }
-        }
-
-        &.active {
-          .title {
-            background: @white;
-            
-            a {
-              color: @gray;
-              cursor: default;
-            }
-
-            &:hover {
-              cursor: default;
-              background: @white;
-            }
-          }
-        }
-
-        .title {
-          background: @gray;
-          a {
-            color: @brandingYellow;
-            font-weight: light;
-            text-transform: uppercase;
-          }
-          
-          &:hover {
-            background: darken(@gray, 10%);
-          }
-
-        }
-
-      }
-    }
-
     .location {
       .google-map {
         iframe {
@@ -1211,14 +1213,13 @@ div.faq-module {
 
 #modal-overlay {
   .transition-in-seconds;
-
   background: @black !important;
 }
 
 #eModal-1 {
   background-color: #fff !important;
   border: 0 !important;
-  
+
   &:after{
     background: url(../images/logo-for-modal-bg.png) no-repeat right top !important;
     content: "";
@@ -1235,21 +1236,6 @@ div.faq-module {
     margin: 0;
     width: 50%;
     margin-left: 25%;
-  }
-
-  a.close-modal {
-    background: @white;
-    font-size: 3em;
-    right: 0;
-    border-radius: 30px;
-    padding: 5px 15px;
-    z-index: 10;
-    top: 0;
-    
-    &:hover {
-      background: darken(@white, 10%);
-    }
-
   }
 
   div.title {
@@ -1276,6 +1262,29 @@ div.faq-module {
         top: 40px;
       }
     } 
+  }
+}
+
+/* Close modal */
+/*-----------------*/
+// Define button style for closing modal windows
+.modal a.close-modal,
+a.close-modal {
+  background: @white;
+  color: @black;
+  font-weight: bold;
+  font-size: 3em;
+  margin: -10px;
+  right: 0;
+  border-radius: 30px;
+  padding: 5px 15px;
+  text-decoration: none;
+  top: 0;
+  z-index: 10;
+  
+  &:hover {
+    background: darken(@white, 10%);
+    text-decoration: none;
   }
 }
 
@@ -1339,46 +1348,6 @@ div.faq-module {
 /*-----------------*/
 .widget.statigram-widget {
   height: 740px;
-}
-
-/* Footer */
-/*-----------------*/
-
-footer[role="contentinfo"] {
-  border-top: 1px solid #ddd;
-  display: block;
-  font-size: 12px;
-  margin: 12px auto;
-  padding: 0 12px 0 0;
-  max-width: 980px;
-
-  > * {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0px 0px;
-    
-    li {
-      display: inline-block;
-      
-      a {
-        display: block;
-        padding: 12px 12px;
-        border-right: 1px solid #ddd;    
-      }
-    }
-  }
-
-  span.copyright {
-    line-height: 1.6;
-    padding: 12px 0;
-    text-align: right;
-  }
-
 }
 
 /* Featured Content Block */
