@@ -255,4 +255,25 @@ jQuery( document ).ready(function( $ ) {
 
   }
 
+  // When near bottom of page
+
+  var doNotOpenFooterModal = false;
+
+  var footerTimer;
+  $(window).scroll(function () {
+    clearTimeout(footerTimer);
+    footerTimer = setTimeout(function() {
+      if (($(window).scrollTop() >= $(document).height() - $(window).height() - 10) && !$('.footer-modal').hasClass('active') && (doNotOpenFooterModal !== true)) {
+        $('footer').addClass('active-footer-modal');
+        $('.footer-modal').addClass('active');
+      } 
+    }, 50);
+  });
+
+  $('.close-footer-modal').on('click', function(){
+    $('.footer-modal').removeClass('active');
+    $('footer').removeClass('active-footer-modal');
+    doNotOpenFooterModal = true;
+  })
+
 })
