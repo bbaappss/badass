@@ -61,22 +61,23 @@
 .top-bar-container {
   height: 56px;
   
-  .logo-container {
+  .logo-container-outer {
     margin: 0 auto;
     position: relative;
 
-    .top-bar-logo-link {
-      left: 0;
+    .logo-container-inner {
+      left: 50%;
       position: absolute;
-      top: 0;
+      margin-left: -39px;
       z-index: 100;
-      
-      img {
-        max-width: 79px; 
-      }
-    
-    }
 
+      .top-bar-logo-link {
+        
+        img {
+          max-width: 79px; 
+        } 
+      }
+    }
   }
 
   .top-bar {
