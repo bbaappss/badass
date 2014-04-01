@@ -22,6 +22,10 @@ get_header(); ?>
         <?php
             $name = get_the_title($post->ID);
             $event_date = get_post_meta($post->ID, 'event_date', true);
+            $past_event = false;
+            if ( (strtotime($event_date) < time()) ) {
+                $past_event = true;
+            }
             $event_bright_link = get_post_meta($post->ID, 'event_bright_registration_link', true);
             $event_waiver_download = get_post_meta($post->ID, 'event_waiver_download');
             $location = get_post_meta($post->ID, 'location', true);
@@ -44,8 +48,6 @@ get_header(); ?>
             //get the value for the relationship field
             $partners = $eventPod->field( 'event_partners' );
         ?>
-
-
     
     <div class="row row-no-max-width page-title">
         <div class="columns large-9 small-12">
@@ -73,139 +75,147 @@ get_header(); ?>
             </div>
         </div> -->
     </div>
-    <div class="row row-no-max-width event-content">
-        <div class="columns large-9 small-12 event-content-inner">
-            <?php $boolCheck = $event_media['0']; ?>
 
-            <?php if ( !empty($youtube_code)  || !is_bool($boolCheck) )   : ?>
-            <div class="slider-container">
-                <?php putRevSlider( "general-event-slider" ) ?>
-            </div>
-            <?php endif; ?>
+    <?php if (!$past_event) : ?>
+        <div class="row row-no-max-width event-content">
+            <div class="columns large-9 small-12 event-content-inner">
+                <?php $boolCheck = $event_media['0']; ?>
 
-            <div class="section-container tabs" data-section="tabs">
-                <section class="information active">
-                    <p class="title" data-section-title><a href="#panel1">EVENT INFORMATION</a></p>
-                    <div class="content" data-section-content>
-                        <?php the_content(); ?>
-                    </div>
-                </section>
-                <section class="location">
-                    <p class="title" data-section-title><a href="#panel1" class="load-map">LOCATION</a></p>
-                    <div class="content" data-section-content>
-                        <div class="location">
-                            <div class="address">
-                                <?php echo $location; ?>
-                            </div>
-                            <div class="google-map hide-for-small-only">
-                                <input type="hidden" class="gmap-code-for-js" value='<?php echo $google_map; ?>'/>
-                            </div>
-                            <div>
-                                <h2>PARKING</h2>
-                                <?php echo $parking_details ?>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="pricing">
-                    <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
-                    <div class="content" data-section-content>
-                        <div class="pricing">
-                            <?php echo $event_pricing; ?>
-                        </div>
-                    </div>
-                </section>
-                <?php if (!empty($custom_tab_title_1) && (!empty($custom_tab_content_1))) : ?>
-                    <section class="<?php echo $custom_tab_title_1; ?>">
-                        <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_1; ?></a></p>
+                <?php if ( !empty($youtube_code)  || !is_bool($boolCheck) )   : ?>
+                <div class="slider-container">
+                    <?php putRevSlider( "general-event-slider" ) ?>
+                </div>
+                <?php endif; ?>
+
+                <div class="section-container tabs" data-section="tabs">
+                    <section class="information active">
+                        <p class="title" data-section-title><a href="#panel1">EVENT INFORMATION</a></p>
                         <div class="content" data-section-content>
-                            <div class="<?php echo $custom_tab_title_1; ?>">
-                                <?php echo $custom_tab_content_1; ?>
+                            <?php the_content(); ?>
+                        </div>
+                    </section>
+                    <section class="location">
+                        <p class="title" data-section-title><a href="#panel1" class="load-map">LOCATION</a></p>
+                        <div class="content" data-section-content>
+                            <div class="location">
+                                <div class="address">
+                                    <?php echo $location; ?>
+                                </div>
+                                <div class="google-map hide-for-small-only">
+                                    <input type="hidden" class="gmap-code-for-js" value='<?php echo $google_map; ?>'/>
+                                </div>
+                                <div>
+                                    <h2>PARKING</h2>
+                                    <?php echo $parking_details ?>
+                                </div>
                             </div>
                         </div>
                     </section>
-                <?php endif; ?>
-                <?php if (!empty($custom_tab_title_2) && (!empty($custom_tab_content_2))) : ?>
-                    <section class="<?php echo $custom_tab_title_2; ?>">
-                        <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_2; ?></a></p>
+                    <section class="pricing">
+                        <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
                         <div class="content" data-section-content>
-                            <div class="<?php echo $custom_tab_title_2; ?>">
-                                <?php echo $custom_tab_content_2; ?>
+                            <div class="pricing">
+                                <?php echo $event_pricing; ?>
                             </div>
                         </div>
                     </section>
-                <?php endif; ?>
-                <!-- <section class="pricing">
-                    <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
-                    <div class="content" data-section-content>
-                        <div class="pricing">
-                            <?php echo $event_pricing; ?>
+                    <?php if (!empty($custom_tab_title_1) && (!empty($custom_tab_content_1))) : ?>
+                        <section class="<?php echo $custom_tab_title_1; ?>">
+                            <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_1; ?></a></p>
+                            <div class="content" data-section-content>
+                                <div class="<?php echo $custom_tab_title_1; ?>">
+                                    <?php echo $custom_tab_content_1; ?>
+                                </div>
+                            </div>
+                        </section>
+                    <?php endif; ?>
+                    <?php if (!empty($custom_tab_title_2) && (!empty($custom_tab_content_2))) : ?>
+                        <section class="<?php echo $custom_tab_title_2; ?>">
+                            <p class="title" data-section-title><a href="#panel1"><?php echo $custom_tab_title_2; ?></a></p>
+                            <div class="content" data-section-content>
+                                <div class="<?php echo $custom_tab_title_2; ?>">
+                                    <?php echo $custom_tab_content_2; ?>
+                                </div>
+                            </div>
+                        </section>
+                    <?php endif; ?>
+                    <!-- <section class="pricing">
+                        <p class="title" data-section-title><a href="#panel1">PRICING</a></p>
+                        <div class="content" data-section-content>
+                            <div class="pricing">
+                                <?php echo $event_pricing; ?>
+                            </div>
                         </div>
-                    </div>
-                </section> -->
-            </div>
-        </div>
-
-        <div class="columns large-3 small-12 sidebar event-sidebar">
-            <div>
-                <a href="<?php echo $event_bright_link; ?>" class="hide-text-indent" target="_blank">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="264" height="44" alt="Register now"/>
-                </a>
-            </div>
-            
-            <div>
-                <input type="hidden" class="countdown-end-date"value="<?php 
-                        $formatRegistrationClose = new DateTime($registration_close);
-                        echo $formatRegistrationClose->format('F j, Y, g:i a');
-                    ?>
-                ">
-                <h2>Registration closes in</h2>
-                <div class="countdown event-countdown styled"></div>
-            </div>
-
-            <div class="ba-panel">
-                <?php
-                    echo $event_right_block_1;
-                ?>
-            </div>
-                
-            <div>
-                <a href="<?php echo $event_waiver_download['0']['guid']; ?>" class="ba-btn btn-large font-messy" target="_blank">DOWNLOAD WAIVER</a>
-            </div>
-
-            <div class="volunteer-container">
-                <button class="ba-btn btn-large font-messy volunteer-form-trigger">VOLUNTEER</button>
-                <div class="volunteer-form">
-                    <p>The BADASS Dash is always looking for good volunteers that are BADASS in their own way and are looking for the experience of a lifetime. Each Volunteer will receive a BADASS Dash™ t-shirt and be provided with drinks / snacks.</p>
-                    <p><strong>SIGN UP TO VOLUNTEER BELOW</strong></p>
-                    <?php echo $volunteer_form_code; ?> 
+                    </section> -->
                 </div>
             </div>
-            <div>
-                <h2>Partners</h2>
-                <ul class="unstyled partners">
-                <?php 
-                    //loop through related field, creating links to their own pages
-                    //only if there is anything to loop through
-                    if ( ! empty( $partners ) ) {
-                        foreach ( $partners as $partner ) { 
-                            //get id for related post and put in ID
-                            //for advanced content types use $id = $rel[ 'id' ];
-                            $id = $partner[ 'ID' ];
-                            $partnerLink = get_post_meta( $id, 'partner_link', true );
-                            $partnerLogo = get_post_meta( $id, 'partner_logo', true );
-                            $partnerLogo = ($partnerLogo['guid']);
 
-                            //show the related post name as link
-                            echo '<li><a href="'.$partnerLink.'"target="_blank" class="desaturate"><img src="'.$partnerLogo.'"/></a></li>';
-                        } //end of foreach
-                    } //endif ! empty ( $related )
-                ?>
-                </ul>
+            <div class="columns large-3 small-12 sidebar event-sidebar">
+                <div>
+                    <a href="<?php echo $event_bright_link; ?>" class="hide-text-indent" target="_blank">
+                        <img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="264" height="44" alt="Register now"/>
+                    </a>
+                </div>
+                
+                <div>
+                    <input type="hidden" class="countdown-end-date"value="<?php 
+                            $formatRegistrationClose = new DateTime($registration_close);
+                            echo $formatRegistrationClose->format('F j, Y, g:i a');
+                        ?>
+                    ">
+                    <h2>Registration closes in</h2>
+                    <div class="countdown event-countdown styled"></div>
+                </div>
+
+                <div class="ba-panel">
+                    <?php
+                        echo $event_right_block_1;
+                    ?>
+                </div>
+                    
+                <div>
+                    <a href="<?php echo $event_waiver_download['0']['guid']; ?>" class="ba-btn btn-large font-messy" target="_blank">DOWNLOAD WAIVER</a>
+                </div>
+
+                <div class="volunteer-container">
+                    <button class="ba-btn btn-large font-messy volunteer-form-trigger">VOLUNTEER</button>
+                    <div class="volunteer-form">
+                        <p>The BADASS Dash is always looking for good volunteers that are BADASS in their own way and are looking for the experience of a lifetime. Each Volunteer will receive a BADASS Dash™ t-shirt and be provided with drinks / snacks.</p>
+                        <p><strong>SIGN UP TO VOLUNTEER BELOW</strong></p>
+                        <?php echo $volunteer_form_code; ?> 
+                    </div>
+                </div>
+                <div>
+                    <h2>Partners</h2>
+                    <ul class="unstyled partners">
+                    <?php 
+                        //loop through related field, creating links to their own pages
+                        //only if there is anything to loop through
+                        if ( ! empty( $partners ) ) {
+                            foreach ( $partners as $partner ) { 
+                                //get id for related post and put in ID
+                                //for advanced content types use $id = $rel[ 'id' ];
+                                $id = $partner[ 'ID' ];
+                                $partnerLink = get_post_meta( $id, 'partner_link', true );
+                                $partnerLogo = get_post_meta( $id, 'partner_logo', true );
+                                $partnerLogo = ($partnerLogo['guid']);
+
+                                //show the related post name as link
+                                echo '<li><a href="'.$partnerLink.'"target="_blank" class="desaturate"><img src="'.$partnerLogo.'"/></a></li>';
+                            } //end of foreach
+                        } //endif ! empty ( $related )
+                    ?>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-    </div>
+        <?php else:  ?>
+        <div class="row row-no-max-width event-content">
+            <div class="columns large-9 small-12 event-content-inner">
+                <p>Past events coming soon!</p>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php endwhile; // end of the loop. ?>
 
