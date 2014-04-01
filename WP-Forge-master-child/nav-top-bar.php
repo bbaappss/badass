@@ -1,15 +1,17 @@
 <div class="top-bar-container sticky fixed">
-    <div class="logo-container hide-for-medium-up">
-        <a 
-            href="<?php echo esc_url( home_url( '/' ) ); ?>" 
-            title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" 
-            rel="home"
-            class="top-bar-logo-link">
-            <?php $header_image = get_header_image();
-            if ( ! empty( $header_image ) ) : ?>
-                <img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
-            <?php endif; ?>
-        </a>
+    <div class="logo-container-outer hide-for-medium-up">
+        <div class="logo-container-inner">
+            <a 
+                href="<?php echo esc_url( home_url( '/' ) ); ?>" 
+                title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" 
+                rel="home"
+                class="top-bar-logo-link">
+                <?php $header_image = get_header_image();
+                if ( ! empty( $header_image ) ) : ?>
+                    <img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
+                <?php endif; ?>
+            </a>
+        </div>
     </div>
     <div class="">
         <nav class="top-bar" data-topbar>
