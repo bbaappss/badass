@@ -143,7 +143,7 @@ get_header(); ?>
               foreach( $recent_posts as $recent )
               {
                   echo '<div class="post-preview-container">';
-                      echo '<h2 class="post-preview-title font-messy">'.$recent["post_title"].'</h2>';
+                      echo '<h2 class="post-preview-title font-messy"><a href="'.get_permalink($recent["ID"]).'">'.$recent["post_title"].'</a></h2>';
                       
                       $postDate = $recent["post_date"];
                       $postDate = new DateTime($postDate); 
