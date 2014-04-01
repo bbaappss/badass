@@ -64,7 +64,7 @@ get_header(); ?>
 
                 foreach($uniqueFAQSectionArray as $sectionTitleRaw) {
                     $sectionTitle = substr($sectionTitleRaw, 1);
-                    echo '<h2>' . $sectionTitle . '</h2>';
+                    echo '<h2 class="all-caps">' . $sectionTitle . '</h2>';
                     echo '<section class="faq-section">';
                     foreach($faqPodArray as $faqQA) {
                         $faqStringArray = explode(',,', $faqQA);
