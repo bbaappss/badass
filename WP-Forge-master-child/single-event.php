@@ -213,6 +213,9 @@ get_header(); ?>
         <div class="row row-no-max-width event-content">
             <div class="columns large-9 small-12 event-content-inner">
                 <p>Past events coming soon!</p>
+                
+                <!-- PUT IMAGE GALLERY HERE -->
+
             </div>
         </div>
     <?php endif; ?>
