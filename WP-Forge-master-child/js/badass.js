@@ -2,7 +2,9 @@ jQuery( document ).ready(function( $ ) {
 
   var is_touch_device = 'ontouchstart' in document.documentElement;
 
-  console.log(is_touch_device);
+  $('.no-go').on('click', function(e){
+    e.preventDefault();
+  })
 
   $('.top-bar .toggle-topbar a').on('click', function(){
 
