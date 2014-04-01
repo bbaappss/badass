@@ -194,5 +194,5 @@ get_header(); ?>
         </div> <!-- end of twitter -->
       </div>
   </div> <!-- end of homepage-container -->
-<?php get_sidebar( 'front' ); ?>        
+<?php get_sidebar( 'front' ); ?>
 <?php get_footer(); ?>
