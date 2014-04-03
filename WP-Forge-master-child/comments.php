@@ -58,4 +58,3 @@ if ( post_password_required() )
 	<?php comment_form(	array('comment_notes_after' => ' ',)); ?>
 
 </div><!-- #comments .comments-area -->
->>>>>>> 1a23d30b76f4f663eccc2920ba9924110eae53fe

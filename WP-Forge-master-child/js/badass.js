@@ -18,7 +18,6 @@ jQuery( document ).ready(function( $ ) {
       $('#wrapper').toggleClass('expanded-menu');
       $('.top-bar-container').toggleClass('expanded-menu');
     }
-     
   })
 
   /* Trigger event volunteer form */
@@ -111,7 +110,6 @@ jQuery( document ).ready(function( $ ) {
       rightNow = rightNow.getTime();
 
       rightNow = Number(rightNow);    
-
 
       if (modalExpireDate !== null) {
         modalExpireDate = Number(modalExpireDate);

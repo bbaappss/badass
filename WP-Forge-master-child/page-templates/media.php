@@ -11,7 +11,6 @@
 
 get_header(); ?>
 <div id="content" class="internal-page large-12 columns" role="main">
-
     <div class="row internal-header hide-for-small">
         <div class="badass-banner-ad">
             <?php echo adrotate_group(1); ?>

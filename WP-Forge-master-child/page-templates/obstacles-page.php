@@ -82,6 +82,7 @@ get_header(); ?>
             ?>
         <?php endwhile; ?>
 
+
         <div class="row obstacles-container">
             <?php 
                 foreach($obstaclePodArray as $obstacleContent) {
@@ -101,6 +102,7 @@ get_header(); ?>
                     }
                 }
             ?>
+
         </div><!-- end of obstacles-container -->
         
         <div class="row row-no-max-width page-title">
