@@ -56,7 +56,7 @@ get_header(); ?>
                         }
 
                         echo '<div class="post-preview-content"><p>'.$parsedContent.'</p></div>';
-                        echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">Read more</a>';
+                        echo '<a href="'.get_permalink($recent["ID"]).'" class="ba-btn read-more">READ MORE</a>';
                     echo '</div>';
                 }
             ?>
@@ -70,9 +70,9 @@ get_header(); ?>
                     <!--<img src="<?php bloginfo('stylesheet_directory'); ?>/images/eventbrite-custombutton.png" width="264" height="44" alt="Register now"/>-->
                 </a>
             </div>
-            <div class="badass-banner-ad vertical">
+            <!--<div class="badass-banner-ad vertical">
                 <?php echo adrotate_group(2); ?>
-            </div>
+            </div>-->
         </div>
     </div>
 </div><!-- #content -->
