@@ -8,6 +8,7 @@
  */
 
 ?>
+
 <div class="obstacle-content hide">
     <?php while ( have_posts() ) : the_post(); ?>
         <?php
