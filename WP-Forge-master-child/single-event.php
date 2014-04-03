@@ -82,12 +82,14 @@ get_header(); ?>
                     </div>
                 </section>
                 <section>
-                    <p class="title" data-section-title><a href="#panel1" class="load-map">LOCATION</a></p>
+                    <p class="title" data-section-title><a href="#panel1" class="load-map">RACE LOCATION</a></p>
                     <div class="content" data-section-content>
                         <div class="location">
                             <div class="address">
                                 <?php echo $location; ?>
+                        
                             </div>
+                            <H2>COURSE MAP</H2>
                             <div class="google-map hide-for-small-only">
                                 <input type="hidden" class="gmap-code-for-js" value='<?php echo $google_map; ?>'/>
                             </div>
