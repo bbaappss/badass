@@ -34,6 +34,6 @@
     </div><!-- #backtotop -->  
 
 <?php wp_footer(); ?>
-<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+<!--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>-->
 </body>
 </html>
