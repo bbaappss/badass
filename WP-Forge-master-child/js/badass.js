@@ -47,7 +47,7 @@ jQuery( document ).ready(function( $ ) {
   /*-----------------*/
   
   // Attach button to DOM
-  $('<button class="ba-btn show-bg-image">Show background image</button>').insertBefore('#wrapper');
+  $('<button class="ba-btn show-bg-image has-paint-it-blue">Show background image</button>').insertBefore('#wrapper');
 
   $('button.show-bg-image').on('click', function(){
     
@@ -64,6 +64,18 @@ jQuery( document ).ready(function( $ ) {
     $('#myatu_bgm_overlay').toggleClass('showing-background');
 
     $('#myatu_bgm_img_group').toggleClass('showing-background');
+
+  })
+
+  /* Paint it blue */
+  /*-----------------*/
+  
+  // Attach button to DOM
+  $('<button class="ba-btn paint-it-blue">Paint it blue</button>').insertBefore('#wrapper');
+
+  $('button.paint-it-blue').on('click', function(){
+    
+    $('body').toggleClass('paint-it-blue');
 
   }) 
 
