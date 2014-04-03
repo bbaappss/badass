@@ -118,7 +118,7 @@ get_header(); ?>
             </div>
         </div>
 
-        <div class="row obstacles-container">
+        <!--<div class="row obstacles-container">
             <?php 
                 foreach($obstaclePodArray as $obstacleContent) {
                     $obstacleStringArray = explode(',,', $obstacleContent);
@@ -136,7 +136,7 @@ get_header(); ?>
                         echo '</div>';                            
                     }
                 }
-            ?>
+            ?>-->
         </div><!-- end of obstacles-container -->
         
     </div><!-- end of obstacle-module -->
